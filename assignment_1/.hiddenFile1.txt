@@ -1,0 +1,1 @@
+This is hiddenFile1.txt file

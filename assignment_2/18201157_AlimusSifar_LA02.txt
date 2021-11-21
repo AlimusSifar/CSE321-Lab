@@ -1,0 +1,137 @@
+---------- TASK 01 ----------
+#!/bin/bash
+sum=0
+
+echo "10 integers"
+for ((i=0; i < 5; i++)) do
+    read x
+
+    if [ $(($x%2)) -eq 0 ]; then
+        if [ $(($x%8)) -ne 0 ]; then
+            let "sum += x"
+        fi
+    fi
+done
+
+ans="the sum is $sum"
+echo $ans
+
+---------- TASK 02 ----------
+#!/bin/bash
+read -p "Enter an integer: " num
+
+if [ $(($num%10)) -eq 0 ]; then
+   if [[ $(($num%4)) -ne 0 || $(($num%5)) -ne 0 ]]; then
+       echo "Rasengan"
+   fi
+fi
+
+if [[ $(($num%5)) -eq 0 || $(($num%6)) -eq 0 ]]; then
+    if [[ $(($num%30)) -ne 0 ]]; then
+        echo "Oodama Rasengan"
+    fi
+fi
+
+if [[ $(($num%5)) -eq 0 && $(($num%6)) -eq 0 ]]; then
+    echo "Rasen Shuriken"
+fi
+
+---------- TASK 03 ----------
+#!/bin/bash
+function happy {
+    local sum
+    local num
+    sum=0
+
+    for ((num=$1; num > 0; num/=10)) do
+        let "digit = num % 10"
+        let "sum += digit ** 2"
+    done
+
+    return $sum
+}
+
+read -p "Enter a number to check if it is happy: " input
+
+num=$input
+res=$num
+
+while [[ $res -ne 1 && $res -ne 4 ]]; do
+    happy $res
+    res=$?
+done
+
+if [ $res -eq 1 ]; then
+    echo "$num is happy"
+
+else
+    if [ $res -eq 4 ]; then
+        echo "$num is not happy"
+    fi
+fi
+
+---------- TASK 04 ----------
+#!/bin/bash
+function sub {
+    num1=$1
+    num2=$2
+    let "ret=num1-num2"
+    return $ret
+}
+
+function add {
+    num1=$1
+    num2=$2
+    let "ret=num1+num2"
+    return $ret
+}
+
+function mul {
+    num1=$1
+    num2=$2
+    let "ret=num1*num2"
+    return $ret
+}
+
+read -p 'Enter first number: ' a
+read -p 'Enter second number: ' b
+read -p 'Enter third number: ' c
+
+if [[ a -gt b ]]; then
+    sub $a $b
+    echo $?
+fi
+
+if [[ c -lt b ]]; then
+    add $b $c
+    echo $?
+fi
+
+if [[ b -eq c ]]; then
+    mul $b $c
+    echo $?
+fi
+
+---------- TASK 05 ----------
+#!/bin/bash
+declare -a array
+
+read -p "Enter number of input: " input
+
+echo "Enter values"
+for ((i=0; i < input; i++)) do
+    read x
+    array[$i]=$x
+done
+
+for ((i = 0; i < input; i++)); do
+    for ((j = 0; j < input - i - 1; j++)); do
+        if [ ${array[j]} -gt ${array[$((j + 1))]} ]; then
+            temp=${array[j]}
+            array[$j]=${array[$((j + 1))]}
+            array[$((j + 1))]=$temp
+        fi
+    done
+done
+
+echo ${array[*]}

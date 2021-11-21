@@ -1,0 +1,70 @@
+~~~~~     Question 1     ~~~~~
+c $ cd CSE321
+
+c/CSE321 $ echo "File name Key 1" > key1.txt
+
+c/CSE321 $ echo "File name Key 2" > key2.txt
+
+c/CSE321 $ echo "File name Key 3" > key3.txt
+
+c/CSE321 $ mkdir Box1
+
+c/CSE321 $ mkdir Box2
+
+c/CSE321 $ cp key1.txt Box1
+
+c/CSE321 $ cp key2.txt Box1
+
+c/CSE321 $ mv key3.txt Box2
+
+c/CSE321 $ cp -r Box1
+
+c/CSE321 $ cp -r Box2
+
+c/CSE321 $ cd Box3
+
+c/CSE321/Box3 $ ls -l
+total 2
+-rw-r--r-- 1 Sabiha 198546 231 Oct 30 21:09 key1.txt
+-rw-r--r-- 1 Sabiha 198546  35 Oct 30 21:09 key2.txt
+
+c/CSE321/Box3 $ chmod -R u=rx .
+
+c/CSE321/Box3 $ chmod -R g=rx .
+
+c/CSE321/Box3 $ cd ..
+
+c/CSE321 $ pwd
+/c/cse321
+
+c/CSE321 $ ls
+Box1  Box2  Box3  key1.txt  key2.txt
+
+c/CSE321 $ mv Box3 /
+
+c/CSE321 $ rm -r *
+
+
+~~~~~     Question 2     ~~~~~
+c/CSE321 $ grep -c 'Hello' hello.txt
+5
+
+
+~~~~~     Question 3     ~~~~~
+Soft link: creates a shortcut to the original file.
+Hard link: creates a mirrored copy of the file. any change in the copy will change the original file.
+
+
+~~~~~     Question 4     ~~~~~
+c/CSE321 $ echo "File name firstone" > firstone.txt
+
+c/CSE321 $ cat firstone.txt > second.txt
+
+
+~~~~~     Question 5     ~~~~~
+c/CSE321 $ ls -a
+. ..
+
+
+~~~~~     Question 6     ~~~~~
+c/CSE321 $ sed -n "15,21p" multilinetext.txt
