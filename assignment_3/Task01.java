@@ -13,8 +13,6 @@ public class Task01 implements Runnable {
     @Override
     public void run() {
         String output = null;
-        // System.out.println(Thread.currentThread().getName());
-
         switch (mode) {
         case "add":
             output = String.format("Sum: %s", a + b);

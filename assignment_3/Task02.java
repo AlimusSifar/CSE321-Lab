@@ -7,6 +7,7 @@ public class Task02 implements Runnable {
         this.houseName = name;
     }
 
+    @Override
     public void run() {
         System.out.printf("The house is : %s\n", houseName);
 
