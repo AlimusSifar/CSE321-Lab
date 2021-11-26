@@ -9,10 +9,6 @@ public class Main {
         /***** TASK 01 *****/
         System.out.println("----- Task 01 -----");
 
-        // /* Test vriables */
-        // var num1 = 12;
-        // var num2 = 7;
-
         System.out.print("Enter 1st integer: ");
         var num1 = keyboard.nextInt();
         System.out.print("Enter 2nd integer: ");
@@ -116,7 +112,7 @@ public class Main {
             th[0].join();
             th[1].join();
             th[2].join();
-            th[2].join();
+            th[3].join();
         } catch (InterruptedException e) {
             // e.printStackTrace();
         }

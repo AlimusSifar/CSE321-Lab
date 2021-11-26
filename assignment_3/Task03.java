@@ -43,9 +43,8 @@ public class Task03 implements Runnable {
         long sum = 0;
         int count = 0;
 
-        for (int i = ini; i < len; i += step) {
+        for (int i = ini; i < len; i += step, count++) {
             sum += array[i];
-            count++;
         }
 
         this.average = sum / count;
