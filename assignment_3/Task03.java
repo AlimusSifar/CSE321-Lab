@@ -22,35 +22,40 @@ public class Task03 implements Runnable {
     @Override
     public void run() {
         if (skipAverage) {
-            calculateMean(mean, 0, mean.length, 1);
+            this.average = calculateMean(0, mean.length);
         } else {
-            if (part == 1 && type == "odd") {
-                calculateMean(fibonacci, 1, 1 + fibonacci.length / 2, 2);
-
-            } else if (part == 1 && type == "even") {
-                calculateMean(fibonacci, 2, 1 + fibonacci.length / 2, 2);
-
-            } else if (part == 2 && type == "odd") {
-                calculateMean(fibonacci, 26, fibonacci.length, 2);
-
-            } else if (part == 2 && type == "even") {
-                calculateMean(fibonacci, 27, fibonacci.length, 2);
+            if (part == 1) {
+                this.average = calculateMean(1, 1 + fibonacci.length / 2);
+            } else if (part == 2) {
+                this.average = calculateMean(1 + fibonacci.length / 2, fibonacci.length);
             }
         }
     }
 
-    private void calculateMean(long[] array, int ini, int len, int step) {
+    public long getMean() {
+        return this.average;
+    }
+
+    private long calculateMean(int ini, int len) {
         long sum = 0;
         int count = 0;
 
-        for (int i = ini; i < len; i += step, count++) {
-            sum += array[i];
+        if (skipAverage) {
+            for (int i = ini; i < len; i++, count++) {
+                sum += mean[i];
+            }
+        } else {
+            for (int i = ini; i < len; i++) {
+                if (type == "odd" && fibonacci[i] % 2 == 1) {
+                    sum += fibonacci[i];
+                    count++;
+                } else if (type == "even" && fibonacci[i] % 2 == 0) {
+                    sum += fibonacci[i];
+                    count++;
+                }
+            }
         }
 
-        this.average = sum / count;
-    }
-
-    public long getMean() {
-        return this.average;
+        return sum / count;
     }
 }
